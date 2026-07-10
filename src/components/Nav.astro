@@ -1,0 +1,33 @@
+---
+export interface Props {
+  currentPath: string;
+}
+
+const { currentPath } = Astro.props;
+const isHome = currentPath === "/";
+const ctaHref = isHome ? "#how" : "/";
+const ctaLabel = isHome ? "How It Works" : "Calculator";
+---
+
+<nav class="flex h-16 items-center justify-between bg-canvas px-4 sm:px-6">
+  <a href="/" class="flex items-center gap-2 no-underline" aria-label="MoveCostMatrix home">
+    <svg width="28" height="28" viewBox="0 0 32 32" fill="none" class="text-ink" aria-hidden="true">
+      <rect width="32" height="32" rx="6" fill="currentColor" />
+      <path d="M10 20V12h3l3 4 3-4h3v8h-3v-4l-3 4-3-4v4H10Z" fill="currentColor" class="text-on-ink" />
+    </svg>
+    <span class="text-sm font-semibold text-ink">MoveCostMatrix</span>
+  </a>
+  <div class="flex items-center gap-1 sm:gap-2">
+    {currentPath !== "/about" && (
+      <a href="/about" aria-current={currentPath === "/about" ? "page" : undefined} class="hidden rounded-full px-3 py-2 text-sm text-body no-underline transition-colors hover:bg-canvas-soft hover:text-ink sm:inline-block">About</a>
+    )}
+    {currentPath !== "/contact" && (
+      <a href="/contact" aria-current={currentPath === "/contact" ? "page" : undefined} class="hidden rounded-full px-3 py-2 text-sm text-body no-underline transition-colors hover:bg-canvas-soft hover:text-ink sm:inline-block">Contact</a>
+    )}
+    <button id="themeToggle" class="flex h-8 w-8 cursor-pointer items-center justify-center rounded-full bg-canvas-soft text-body transition-colors hover:bg-hairline hover:text-ink" aria-label="Toggle dark mode">
+      <svg class="sun-icon block dark:hidden" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+      <svg class="moon-icon hidden dark:block" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    </button>
+    <a href={ctaHref} class="rounded-full bg-ink px-5 py-2 text-sm font-medium text-on-ink no-underline transition-opacity hover:opacity-90">{ctaLabel}</a>
+  </div>
+</nav>

@@ -1,0 +1,48 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Nav from "../components/Nav.astro";
+import Footer from "../components/Footer.astro";
+---
+
+<Layout title="Contact Us | MoveCostMatrix" description="Get in touch with MoveCostMatrix. Report issues, suggest features, or ask questions about our free moving cost calculator." canonical="/contact">
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://movecostmatrix.com/" },
+        { "@type": "ListItem", "position": 2, "name": "Contact", "item": "https://movecostmatrix.com/contact" }
+      ]
+    }
+  </script>
+  <Nav currentPath="/contact" />
+
+  <main>
+  <section class="bg-canvas px-4 pb-28 pt-16 sm:pb-36 sm:pt-24">
+    <div class="mx-auto max-w-3xl">
+      <span class="font-mono text-xs uppercase tracking-wide text-mute">Contact</span>
+      <h1 class="mt-2 text-3xl font-semibold tracking-tight text-ink">Get in Touch</h1>
+      <p class="mt-2 max-w-xl text-body">Have a question, suggestion, or found a bug? We would love to hear from you.</p>
+
+      <div class="mt-10 space-y-6">
+        <div class="rounded-lg border border-hairline bg-canvas-soft p-6">
+          <h2 class="text-lg font-semibold text-ink">Email</h2>
+          <p class="mt-1 text-sm text-body">Send us an email at <a href="mailto:hello@movecostmatrix.com" class="text-link underline">hello@movecostmatrix.com</a>. We aim to respond within 48 hours.</p>
+        </div>
+
+        <div class="rounded-lg border border-hairline bg-canvas-soft p-6">
+          <h2 class="text-lg font-semibold text-ink">GitHub</h2>
+          <p class="mt-1 text-sm text-body">Found a bug or want to suggest a feature? Open an issue on our <a href="https://github.com/movecostmatrix/moving-cost-calculator" target="_blank" rel="noopener noreferrer" class="text-link underline">GitHub repository</a>.</p>
+        </div>
+
+        <div class="rounded-lg border border-hairline bg-canvas-soft p-6">
+          <h2 class="text-lg font-semibold text-ink">Before You Contact Us</h2>
+          <p class="mt-1 text-sm text-body">Check our <a href="/privacy" class="text-link underline">Privacy Policy</a> and <a href="/terms" class="text-link underline">Terms and Conditions</a> for answers to common questions.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  </main>
+
+  <Footer currentPath="/contact" />
+</Layout>

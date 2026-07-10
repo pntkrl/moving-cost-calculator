@@ -1,0 +1,36 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Nav from "../components/Nav.astro";
+import Footer from "../components/Footer.astro";
+---
+
+<Layout title="Page Not Found | MoveCostMatrix" description="The page you are looking for does not exist. Return to the MoveCostMatrix homepage." canonical="/404">
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://movecostmatrix.com/" },
+        { "@type": "ListItem", "position": 2, "name": "404 — Page Not Found", "item": "https://movecostmatrix.com/404" }
+      ]
+    }
+  </script>
+  <Nav currentPath="/" />
+
+  <main>
+    <section class="bg-canvas px-4 pb-28 pt-24 sm:pb-36 sm:pt-32">
+      <div class="mx-auto max-w-xl text-center">
+        <span class="font-mono text-6xl font-semibold tracking-tight text-hairline">404</span>
+        <h1 class="mt-2 text-2xl font-semibold tracking-tight text-ink">Page Not Found</h1>
+        <p class="mx-auto mt-2 max-w-md text-body">The page you are looking for does not exist or has been moved. Try the calculator or browse the pages below.</p>
+        <div class="mt-8 flex flex-wrap items-center justify-center gap-3">
+          <a href="/" class="rounded-full bg-ink px-6 py-2.5 text-sm font-medium text-on-ink no-underline transition-opacity hover:opacity-90">Go to Calculator</a>
+          <a href="/about" class="rounded-full border border-hairline px-6 py-2.5 text-sm font-medium text-ink no-underline transition-colors hover:bg-canvas-soft">About</a>
+          <a href="/contact" class="rounded-full border border-hairline px-6 py-2.5 text-sm font-medium text-ink no-underline transition-colors hover:bg-canvas-soft">Contact</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer currentPath="/" />
+</Layout>

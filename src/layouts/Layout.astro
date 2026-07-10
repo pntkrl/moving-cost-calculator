@@ -1,23 +1,128 @@
-<!doctype html>
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
-	</head>
-	<body>
-		<slot />
-	</body>
-</html>
+---
+import "../styles/global.css";
 
-<style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
-</style>
+export interface Props {
+  title?: string;
+  description?: string;
+  canonical?: string;
+}
+
+const { title = "MoveCostMatrix | Free Moving Cost Calculator", description = "Compare DIY truck, moving container, and professional mover costs instantly. Free, privacy-first moving cost calculator — no sign-up needed.", canonical = "/" } = Astro.props;
+const domain = "https://movecostmatrix.com";
+---
+
+<!doctype html>
+<html lang="en" class="">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="theme-color" id="themeColor" content="#fafafa" />
+    <meta name="darkreader-lock" content="none" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={`${domain}${canonical}`} />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="MoveCostMatrix" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta property="og:image" content={`${domain}/og-image.svg`} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:image" content={`${domain}/og-image.svg`} />
+    <script is:inline>
+      (function () {
+        var meta = document.createElement("meta");
+        meta.name = "robots";
+        if (window.location.hostname.endsWith("pages.dev")) {
+          meta.content = "noindex, nofollow";
+        } else {
+          meta.content = "index, follow";
+        }
+        document.head.appendChild(meta);
+      })();
+    </script>
+    <link rel="canonical" href={`${domain}${canonical}`} />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "MoveCostMatrix",
+        "url": "https://movecostmatrix.com",
+        "description": "Free, privacy-first moving cost calculator. Compare DIY truck, moving container, and professional mover costs instantly.",
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "email": "hello@movecostmatrix.com",
+          "contactType": "customer support"
+        }
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "MoveCostMatrix",
+        "url": "https://movecostmatrix.com",
+        "description": "Free moving cost calculator — compare DIY truck, moving containers, and professional movers.",
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": {
+            "@type": "EntryPoint",
+            "urlTemplate": "https://movecostmatrix.com/?q={search_term_string}"
+          },
+          "query-input": "required name=search_term_string"
+        }
+      }
+    </script>
+    <script is:inline>
+      (function () {
+        var stored;
+        try { stored = localStorage.getItem("movecost-theme"); } catch(e) {}
+        if (stored === "dark" || (!stored && window.matchMedia("(prefers-color-scheme: dark)").matches)) {
+          document.documentElement.classList.add("dark");
+          var m = document.getElementById("themeColor");
+          if (m) m.setAttribute("content", "#1a1a1a");
+        }
+      })();
+    </script>
+    <meta name="google-adsense-account" content="ca-pub-4836558575831697">
+    <link rel="preconnect" href="https://pagead2.googlesyndication.com" />
+    <link rel="preconnect" href="https://fundingchoicesmessages.google.com" />
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4836558575831697" crossorigin="anonymous"></script>
+    <!-- Google tag (gtag.js) -->
+    <script is:inline>
+      (function() {
+        window.dataLayer = window.dataLayer || [];
+        window.gtag = function() { dataLayer.push(arguments); };
+
+        function loadGTM() {
+          if (window.gtmLoaded) return;
+          window.gtmLoaded = true;
+
+          triggerEvents.forEach(function(e) {
+            window.removeEventListener(e, loadGTM, { passive: true });
+          });
+
+          gtag('js', new Date());
+          gtag('config', 'G-CNSF2RTM9W');
+
+          var s1 = document.createElement('script');
+          s1.async = true;
+          s1.src = 'https://www.googletagmanager.com/gtag/js?id=G-CNSF2RTM9W';
+          document.head.appendChild(s1);
+        }
+
+        var triggerEvents = ['touchstart', 'click'];
+        triggerEvents.forEach(function(e) {
+          window.addEventListener(e, loadGTM, { passive: true });
+        });
+      })();
+    </script>
+  </head>
+  <body class="min-h-screen">
+    <slot />
+  </body>
+</html>

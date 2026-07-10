@@ -1,0 +1,57 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Nav from "../components/Nav.astro";
+import Footer from "../components/Footer.astro";
+---
+
+<Layout title="Privacy Policy | MoveCostMatrix" description="MoveCostMatrix privacy policy. We do not collect, store, or share any personal data. Everything runs in your browser." canonical="/privacy">
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://movecostmatrix.com/" },
+        { "@type": "ListItem", "position": 2, "name": "Privacy Policy", "item": "https://movecostmatrix.com/privacy" }
+      ]
+    }
+  </script>
+  <Nav currentPath="/privacy" />
+
+  <main>
+  <section class="bg-canvas px-4 pb-28 pt-16 sm:pb-36 sm:pt-24">
+    <div class="mx-auto max-w-3xl">
+      <span class="font-mono text-xs uppercase tracking-wide text-mute">Legal</span>
+      <h1 class="mt-2 text-3xl font-semibold tracking-tight text-ink">Privacy Policy</h1>
+      <p class="mt-1 text-sm text-mute">Last updated: July 2026</p>
+
+      <div class="mt-8 space-y-6 text-sm leading-relaxed text-body content">
+        <h2 class="text-lg font-semibold text-ink">Our Privacy Promise</h2>
+        <p>MoveCostMatrix is a privacy-focused moving cost calculator. We designed the service so that your calculator entries, locations, and cost estimates are processed entirely in your browser. You do not need to create an account or provide an email address to use our service. We use Google Analytics to monitor anonymous traffic trends to help us maintain and improve the site.</p>
+
+        <h2 class="text-lg font-semibold text-ink">What Data We Collect</h2>
+        <p>We do not collect, store, or process any personal information or calculation details. All calculation data — including origin and destination entries, distance results, and cost estimates — runs entirely in your browser using JavaScript. We do collect aggregated, anonymized website usage statistics via Google Analytics (see the <a href="#analytics" class="text-link underline">Analytics section</a> below).</p>
+
+        <h2 class="text-lg font-semibold text-ink">Third-Party Services</h2>
+        <p>The calculator makes external network requests to the <a href="https://zippopotam.us" target="_blank" rel="noopener noreferrer" class="text-link underline">zippopotam.us API</a> (a free public postal-code lookup service) to look up coordinates for distance calculation when you enter a postal code. Additionally, we load Google Analytics scripts from Google servers to monitor site usage.</p>
+
+        <h2 class="text-lg font-semibold text-ink">Cookies</h2>
+        <p>We use Google Analytics, which sets cookies on your device to collect anonymized website usage statistics. We do not use advertising cookies, marketing trackers, or tracking pixels. The only local storage used directly by our site is your dark-mode preference (<code class="rounded bg-canvas-soft px-1.5 py-0.5 font-mono text-xs">movecost-theme</code>), which is stored in your browser&rsquo;s localStorage to preserve your display settings and is never transmitted to us or any third parties.</p>
+
+        <h2 id="analytics" class="text-lg font-semibold text-ink">Analytics</h2>
+        <p>We use Google Analytics (specifically Google Tag with ID <code class="rounded bg-canvas-soft px-1.5 py-0.5 font-mono text-xs">G-CNSF2RTM9W</code>) to collect anonymized website traffic data. This helps us understand how visitors interact with the calculator, which pages are visited, and how we can improve the user experience. The data collected includes information about your device, browser, and pages visited, but does not identify you personally. You can opt-out of Google Analytics tracking by using a browser add-on such as the <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener noreferrer" class="text-link underline">Google Analytics Opt-out Browser Add-on</a> or by blocking cookies in your browser settings.</p>
+
+        <h2 class="text-lg font-semibold text-ink">Data Retention</h2>
+        <p>Since we collect no data, there is nothing to retain. Your calculation results exist only in your browser tab and disappear when you close or refresh the page.</p>
+
+        <h2 class="text-lg font-semibold text-ink">Changes to This Policy</h2>
+        <p>If we make material changes to this policy, we will update the &ldquo;Last updated&rdquo; date at the top. Because we collect no data, any changes will relate to new third-party integrations or service architecture, which we will clearly document.</p>
+
+        <h2 class="text-lg font-semibold text-ink">Contact</h2>
+        <p>If you have questions about this privacy policy, <a href="/contact" class="text-link underline">contact us here</a>.</p>
+      </div>
+    </div>
+  </section>
+  </main>
+
+  <Footer currentPath="/privacy" />
+</Layout>

@@ -1,22 +1,12 @@
-## Development
+Always use:
+1. astro js, tailwind-4-docs, web-design-guidelines these 3 skills for this project
+2. Design.md for designing this project
 
-When starting the dev server, use background mode:
+## MovingCostCalculator
 
-```
-astro dev --background
-```
-
-Manage the background server with `astro dev stop`, `astro dev status`, and `astro dev logs`.
-
-## Documentation
-
-Full documentation: https://docs.astro.build
-
-Consult these guides before working on related tasks:
-
-- [Adding pages, dynamic routes, or middleware](https://docs.astro.build/en/guides/routing/)
-- [Working with Astro components](https://docs.astro.build/en/basics/astro-components/)
-- [Using React, Vue, Svelte, or other framework components](https://docs.astro.build/en/guides/framework-components/)
-- [Adding or managing content](https://docs.astro.build/en/guides/content-collections/)
-- [Adding styles or using Tailwind](https://docs.astro.build/en/guides/styling/)
-- [Supporting multiple languages](https://docs.astro.build/en/guides/internationalization/)
+### Region-adjusted pricing (`MovingCostCalculatorLogic.ts`)
+- `COUNTRY_COST_MULTIPLIERS`: `{ US: 1.0, CA: 0.95, GB: 1.3, AU: 1.15, IN: 0.35 }`
+- `getRegionMultiplier()` detects country from origin/destination and returns the multiplier
+- `getRegionLabel()` returns the human-readable region name for display
+- Applied inside `renderEstimates()`: base rates × multiplier before currency conversion
+- Detected via `detectRegion()` (city/state/country parsing); falls back to 1.0 if unknown

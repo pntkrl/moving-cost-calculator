@@ -1,0 +1,24 @@
+# MoveCostMatrix
+
+> Free, privacy-first moving cost calculator. Compare DIY truck rental, moving containers, and professional movers side by side. No email required, no data collection.
+
+## Key Pages
+
+- [Home — Moving Cost Calculator](https://movecostmatrix.com/)
+- [About Us](https://movecostmatrix.com/about)
+- [Contact](https://movecostmatrix.com/contact)
+- [Privacy Policy](https://movecostmatrix.com/privacy)
+- [Terms and Conditions](https://movecostmatrix.com/terms)
+- [Press](https://movecostmatrix.com/press)
+- [Machine-Readable Pricing](https://movecostmatrix.com/pricing.md)
+- [Sitemap](https://movecostmatrix.com/sitemap.xml)
+
+## Features
+
+- Three-way estimate comparison: DIY truck ($0.80/mi), Moving containers ($1.50/mi), Professional movers ($2.50/mi)
+- Real distance calculation via postal code geocoding (Haversine + 20% road adjustment)
+- 7 currencies: USD, EUR, GBP, CAD, AUD, INR, JPY
+- Unit toggle: miles and kilometers
+- Region-specific mover recommendations (8 regions)
+- Dark mode with system preference detection
+- 100% client-side: no data collection, no account needed

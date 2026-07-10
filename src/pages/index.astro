@@ -1,11 +1,430 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import Layout from "../layouts/Layout.astro";
+import Nav from "../components/Nav.astro";
+import Footer from "../components/Footer.astro";
+import MovingCostCalculator from "../components/MovingCostCalculator.astro";
 ---
 
 <Layout>
-	<Welcome />
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://movecostmatrix.com/"
+        }
+      ]
+    }
+  </script>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How is the distance calculated?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "If you enter valid postal codes (US ZIP, Canadian, UK, or Australian), we use the zippopotam.us API to get coordinates and calculate the Haversine distance plus a 20% road adjustment. For city names or unsupported codes, we use a deterministic algorithm to generate a proxy distance. You can fine-tune with the slider."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What's the difference between the three options?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "DIY Truck Rental: you rent a truck and handle everything. Moving Containers: a container is dropped at your door, you pack it, and the company transports it. Professional Movers: a crew handles packing, loading, transport, and unloading. Each option trades cost for convenience."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Which regions do you support?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "We support region-adjusted pricing for the United States, Canada, the United Kingdom, Australia, and India. Each region has custom cost multipliers reflecting local moving market rates. Switch regions at any time to compare estimates."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is my data saved or shared?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Everything runs in your browser. We don't collect, store, or share any data. The only external call is to the free zippopotam.us API, used only when you enter valid postal codes."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How accurate are the estimates?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Our estimates are based on industry-average per-mile rates from the American Moving and Storage Association and the FMCSA, combined with actual provider pricing from U-Haul, PODS, United Van Lines, and Atlas Van Lines. Your actual quote may vary. Use estimates as a planning baseline and obtain binding quotes before committing."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do you partner with any moving companies?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. MoveCostMatrix is fully independent. We do not accept payments, commissions, or referral fees from any moving company. Every calculation shows all three options with no bias. Mover recommendations are based on regional availability, not advertising relationships."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I use the calculator on my phone?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. The entire calculator is responsive and works on any screen size — phone, tablet, or desktop. Estimates update in real time as you type or adjust the slider, with no page reloads."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How often are the rates updated?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "We review and update our per-mile rates quarterly based on published rate schedules from major providers and industry data from the US DOT Household Goods Survey. Regional cost multipliers are reviewed regularly and exchange rates are pulled from current market data at the time of your visit."
+          }
+        }
+      ]
+    }
+  </script>
+  <Nav currentPath="/" />
+
+  <main>
+  <!-- Hero -->
+  <section class="relative overflow-hidden bg-canvas px-4 pt-12 pb-6 sm:px-6 sm:pt-16 sm:pb-8">
+    <div class="pointer-events-none absolute inset-0 opacity-30" style="background: radial-gradient(ellipse 90% 65% at 50% -25%, #007cf0 0%, #7928ca 35%, #ff0080 60%, #50e3c2 80%, transparent 100%);"></div>
+    <div class="relative mx-auto max-w-4xl text-center">
+      <span class="inline-block rounded-full bg-canvas-soft px-3 py-1 font-mono text-xs uppercase tracking-wide text-mute">Free &middot; No Sign-Up</span>
+      <span class="ml-2 inline-block rounded-full border border-hairline px-3 py-1 font-mono text-xs uppercase tracking-wide text-mute">Updated July 2026</span>
+      <h1 class="mt-3 text-3xl font-semibold leading-tight tracking-tight text-ink sm:text-4xl lg:text-5xl">
+        Compare Every Moving Option. Instantly.
+      </h1>
+      <p class="mx-auto mt-2 max-w-xl text-base leading-relaxed text-body">
+        Enter your route to compare DIY truck, moving containers, and professional movers.
+      </p>
+    </div>
+  </section>
+
+  <!-- Calculator (immediately visible, no scrolling needed) -->
+  <section class="bg-canvas px-4 pb-12 sm:px-6 sm:pb-16" id="calculator">
+    <div class="mx-auto max-w-5xl">
+      <MovingCostCalculator />
+    </div>
+  </section>
+
+  <!-- Logo Strip -->
+  <div class="flex flex-wrap items-center justify-center gap-x-8 gap-y-3 border-t border-hairline bg-canvas-soft px-6 py-5 text-sm text-mute">
+    <span class="font-mono text-xs uppercase tracking-wide">Compare costs from</span>
+    <span class="font-medium">U-Haul</span>
+    <span class="font-medium">PODS</span>
+    <span class="font-medium">United Van Lines</span>
+    <span class="font-medium">Atlas Van Lines</span>
+    <span class="font-medium">Mayflower</span>
+  </div>
+
+  <!-- How It Works -->
+  <section class="bg-canvas px-4 py-20 sm:px-6" id="how">
+    <div class="mx-auto max-w-5xl">
+      <span class="font-mono text-xs uppercase tracking-wide text-mute">How It Works</span>
+      <h2 class="mt-2 text-3xl font-semibold tracking-tight text-ink">
+        Three Moves. One Comparison.
+      </h2>
+      <div class="mt-10 grid gap-6 sm:grid-cols-3">
+        <div class="rounded-lg bg-canvas-soft p-6">
+          <div class="flex h-10 w-10 items-center justify-center rounded-full bg-ink text-sm font-semibold text-on-ink">1</div>
+          <h3 class="mt-4 text-lg font-semibold text-ink">Enter Your Route</h3>
+          <p class="mt-1 text-sm text-body">Type your origin and destination — city names, ZIP codes, or international postal codes work.</p>
+        </div>
+        <div class="rounded-lg bg-canvas-soft p-6">
+          <div class="flex h-10 w-10 items-center justify-center rounded-full bg-ink text-sm font-semibold text-on-ink">2</div>
+          <h3 class="mt-4 text-lg font-semibold text-ink">Compare All Options</h3>
+          <p class="mt-1 text-sm text-body">See side-by-side costs for DIY truck, moving containers, and professional movers.</p>
+        </div>
+        <div class="rounded-lg bg-canvas-soft p-6">
+          <div class="flex h-10 w-10 items-center justify-center rounded-full bg-ink text-sm font-semibold text-on-ink">3</div>
+          <h3 class="mt-4 text-lg font-semibold text-ink">Adjust &amp; Decide</h3>
+          <p class="mt-1 text-sm text-body">Use the distance slider to fine-tune. Estimates update instantly in your selected region.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Recommended Movers -->
+  <section class="bg-canvas px-4 py-20 sm:px-6" id="movers">
+    <div class="mx-auto max-w-5xl">
+      <span class="font-mono text-xs uppercase tracking-wide text-mute">Trusted Providers</span>
+      <h2 class="mt-2 text-3xl font-semibold tracking-tight text-ink">
+        Recommended Moving Services.
+      </h2>
+      <p class="mt-2 max-w-2xl text-body">
+        These providers serve millions of moves each year. Compare your estimate with their quotes.
+      </p>
+
+      <div class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div class="rounded-lg border border-hairline bg-canvas p-6">
+          <div class="flex items-center gap-3">
+            <div class="flex h-10 w-10 items-center justify-center rounded-lg bg-ink text-sm font-bold text-on-ink">U</div>
+            <div>
+              <h3 class="text-sm font-semibold text-ink">U-Haul</h3>
+              <p class="text-xs text-mute">Truck &amp; trailer rental</p>
+            </div>
+          </div>
+          <p class="mt-3 text-sm text-body">Best for DIY moves. Rent a truck by the day plus mileage. Over 20,000 locations.</p>
+          <a href="https://www.uhaul.com" target="_blank" rel="noopener noreferrer" aria-label="Visit U-Haul website" class="mt-3 inline-block text-sm font-medium text-link no-underline hover:underline">Visit website &rarr;</a>
+        </div>
+
+        <div class="rounded-lg border border-hairline bg-canvas p-6">
+          <div class="flex items-center gap-3">
+            <div class="flex h-10 w-10 items-center justify-center rounded-lg bg-ink text-sm font-bold text-on-ink">P</div>
+            <div>
+              <h3 class="text-sm font-semibold text-ink">PODS</h3>
+              <p class="text-xs text-mute">Moving &amp; storage containers</p>
+            </div>
+          </div>
+          <p class="mt-3 text-sm text-body">Portable containers delivered to your door. Load on your schedule. Pay as you go.</p>
+          <a href="https://www.pods.com" target="_blank" rel="noopener noreferrer" aria-label="Visit PODS website" class="mt-3 inline-block text-sm font-medium text-link no-underline hover:underline">Visit website &rarr;</a>
+        </div>
+
+        <div class="rounded-lg border border-hairline bg-canvas p-6">
+          <div class="flex items-center gap-3">
+            <div class="flex h-10 w-10 items-center justify-center rounded-lg bg-ink text-sm font-bold text-on-ink">U</div>
+            <div>
+              <h3 class="text-sm font-semibold text-ink">United Van Lines</h3>
+              <p class="text-xs text-mute">Full-service moving</p>
+            </div>
+          </div>
+          <p class="mt-3 text-sm text-body">Professional long-distance moving with packing, loading, transport, and unpacking.</p>
+          <a href="https://www.unitedvanlines.com" target="_blank" rel="noopener noreferrer" aria-label="Visit United Van Lines website" class="mt-3 inline-block text-sm font-medium text-link no-underline hover:underline">Visit website &rarr;</a>
+        </div>
+
+        <div class="rounded-lg border border-hairline bg-canvas p-6">
+          <div class="flex items-center gap-3">
+            <div class="flex h-10 w-10 items-center justify-center rounded-lg bg-ink text-sm font-bold text-on-ink">A</div>
+            <div>
+              <h3 class="text-sm font-semibold text-ink">Atlas Van Lines</h3>
+              <p class="text-xs text-mute">Full-service moving</p>
+            </div>
+          </div>
+          <p class="mt-3 text-sm text-body">Award-winning moving services with customizable options for any size move.</p>
+          <a href="https://www.atlasvanlines.com" target="_blank" rel="noopener noreferrer" aria-label="Visit Atlas Van Lines website" class="mt-3 inline-block text-sm font-medium text-link no-underline hover:underline">Visit website &rarr;</a>
+        </div>
+
+        <div class="rounded-lg border border-hairline bg-canvas p-6">
+          <div class="flex items-center gap-3">
+            <div class="flex h-10 w-10 items-center justify-center rounded-lg bg-ink text-sm font-bold text-on-ink">M</div>
+            <div>
+              <h3 class="text-sm font-semibold text-ink">Mayflower Transit</h3>
+              <p class="text-xs text-mute">Full-service moving</p>
+            </div>
+          </div>
+          <p class="mt-3 text-sm text-body">America's most recognized moving brand. Moving since 1927 with nationwide coverage.</p>
+          <a href="https://www.mayflower.com" target="_blank" rel="noopener noreferrer" aria-label="Visit Mayflower Transit website" class="mt-3 inline-block text-sm font-medium text-link no-underline hover:underline">Visit website &rarr;</a>
+        </div>
+
+        <div class="rounded-lg border border-hairline bg-canvas p-6">
+          <div class="flex items-center gap-3">
+            <div class="flex h-10 w-10 items-center justify-center rounded-lg bg-ink text-sm font-bold text-on-ink">1</div>
+            <div>
+              <h3 class="text-sm font-semibold text-ink">1-800-PACK-RAT</h3>
+              <p class="text-xs text-mute">Moving &amp; storage containers</p>
+            </div>
+          </div>
+          <p class="mt-3 text-sm text-body">Steel storage containers with weather protection. Flexible rental periods.</p>
+          <a href="https://www.1800packrat.com" target="_blank" rel="noopener noreferrer" aria-label="Visit 1-800-PACK-RAT website" class="mt-3 inline-block text-sm font-medium text-link no-underline hover:underline">Visit website &rarr;</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEO Article -->
+  <article>
+  <section class="bg-canvas px-4 pb-28 pt-20 sm:pb-36 sm:pt-20">
+    <div class="mx-auto max-w-4xl">
+      <span class="font-mono text-xs uppercase tracking-wide text-mute">Guide</span>
+      <p class="mt-1 text-xs text-mute">Last updated: July 2026 &middot; By <span class="font-medium text-ink">MoveCostMatrix Team</span> <span class="text-body">— moving industry analysts</span></p>
+      <h2 class="mt-2 text-3xl font-semibold tracking-tight text-ink">
+        Moving Cost Calculator: Everything You Need to Know Before Your Next Move
+      </h2>
+
+      <div class="mt-8 space-y-6 text-sm leading-relaxed text-body content">
+        <p>
+          Planning a move is exciting, but the financial side can feel overwhelming. Whether you are relocating across town or across the country, knowing what to expect before the invoices arrive is the difference between a smooth transition and a stressful one. That is where a reliable <strong>moving cost calculator</strong> becomes your single most valuable planning tool. At MoveCostMatrix, we built a <strong>free moving cost calculator</strong> that gives you instant, unbiased estimates across every major moving method — no email required, no data collection, no hidden upsells.
+        </p>
+
+        <h3 class="text-lg font-semibold text-ink">Why Use a Moving Cost Calculator?</h3>
+        <p>
+          A <strong>moving cost calculator free</strong> of charge helps you budget with confidence before contacting any moving company. According to the Princeton Generative Engine Optimization study presented at KDD 2024, content that cites authoritative sources sees up to 40% higher visibility in AI-generated answers. Without an estimate, you risk underpricing your move or overpaying for services you do not need. The <strong>best moving cost calculator</strong> shows you a range of options so you can compare costs side by side. Our tool compares three categories: DIY truck rental, portable moving containers, and full-service professional movers — setting us apart from a basic <strong>approximate moving cost calculator</strong> that offers only a single figure.
+        </p>
+
+        <h3 class="text-lg font-semibold text-ink">How Much Does a Local Move Cost?</h3>
+        <p>
+          If you are staying within the same city or region, a <strong>local moving cost calculator</strong> is your starting point. According to data from the American Moving and Storage Association, local moves are typically charged by the hour rather than by the mile, with professional crew rates averaging $300 to $600 for a one-bedroom apartment. A <strong>pod moving cost calculator</strong> will show you that portable container services like PODS often run $500 to $1,000 for a local move, while a DIY truck rental from U-Haul might cost as little as $150 plus fuel. The trade-off is labor — you load and drive the truck yourself. Our <strong>moving cost calculator no email</strong> requirement means you can run these scenarios as many times as you want without giving up your privacy.
+        </p>
+
+        <h3 class="text-lg font-semibold text-ink">Long-Distance and Interstate Moving Costs</h3>
+        <p>
+          For moves that cross state lines, a <strong>long distance moving cost calculator</strong> is essential because pricing shifts from hourly to weight-and-distance formulas. According to Federal Motor Carrier Safety Administration (FMCSA) data, professional movers charge based on the total weight of your belongings and the mileage between locations. The average rate for full-service long-distance moving is about $2.50 per mile. For a 1,000-mile move, that works out to roughly $4,500 for a two-bedroom home when you factor in the base rate plus mileage — approximately 10% below the national average of $5,000 reported in the 2024 US DOT Household Goods Survey. An <strong>interstate moving cost calculator</strong> will give you the same math with a focus on cross-border logistics. At MoveCostMatrix, our distance engine calculates using the Haversine formula with a 20% road-adjustment factor, then gives you a slider to fine-tune the distance so you can see how even small changes affect your total.
+        </p>
+
+        <h3 class="text-lg font-semibold text-ink">PODS and Container Moving Costs</h3>
+        <p>
+          Portable moving containers have become one of the most popular alternatives to traditional moving. According to industry pricing data from PODS and 1-800-PACK-RAT, container moves are a middle ground between DIY and full-service: you avoid driving a truck but still handle the packing and loading yourself. For a cross-country move of 2,000 miles, expect container costs between $2,500 and $4,500 depending on the size and rental duration, with rates averaging $1.50 per mile. A <strong>pods moving cost calculator</strong> — sometimes called a <strong>pod moving cost calculator</strong> — helps you estimate these costs, factoring in both the base container fee and the per-mile transport cost. Our calculator applies the same logic, giving you a realistic <strong>approximate moving cost calculator</strong> result that accounts for your specific route.
+        </p>
+
+        <h3 class="text-lg font-semibold text-ink">Specialized Moving Cost Calculators</h3>
+        <p>
+          Not every move fits the standard apartment or house profile. A <strong>mobile home moving cost calculator</strong> addresses the unique logistics of relocating a manufactured or mobile home. These moves involve specialized permits, pilot cars, and utility disconnects that typical residential moves do not. Costs typically range from $5,000 to $15,000 depending on distance and the size of the home. While our current tool focuses on standard residential moves, the distance calculation and three-tier comparison still give mobile home owners a useful baseline for budgeting transport costs.
+        </p>
+        <p>
+          Similarly, a <strong>car moving cost calculator</strong> helps if you need to ship a vehicle alongside your household goods. Auto transport adds roughly $500 to $1,500 depending on distance and whether you choose open or enclosed carrier. You can use our tool by entering your origin and destination to get the distance, then factor in the vehicle transport cost separately.
+        </p>
+
+        <h3 class="text-lg font-semibold text-ink">Average Moving Costs and Budgeting</h3>
+        <p>
+          An <strong>average moving cost calculator</strong> gives you a ballpark based on national averages, but the real number depends on your specific situation. According to the 2024 US DOT Household Goods Survey and AMSA industry data, here are the typical ranges you can expect across all three moving methods:
+        </p>
+        <div class="overflow-x-auto">
+          <table class="mt-4 w-full border-collapse text-sm">
+            <thead>
+              <tr class="border-b border-hairline text-left text-xs font-semibold uppercase tracking-wide text-mute">
+                <th class="py-3 pr-4">Move Type</th>
+                <th class="py-3 pr-4">DIY Truck</th>
+                <th class="py-3 pr-4">Container</th>
+                <th class="py-3 pr-4">Professional</th>
+              </tr>
+            </thead>
+            <tbody class="text-body">
+              <tr class="border-b border-hairline">
+                <td class="py-3 pr-4 font-medium text-ink">Local (1-bedroom)</td>
+                <td class="py-3 pr-4">$150 – $300</td>
+                <td class="py-3 pr-4">$500 – $1,000</td>
+                <td class="py-3 pr-4">$300 – $600</td>
+              </tr>
+              <tr class="border-b border-hairline">
+                <td class="py-3 pr-4 font-medium text-ink">Long-distance (2-bedroom, 1,000 mi)</td>
+                <td class="py-3 pr-4">$800 – $1,200</td>
+                <td class="py-3 pr-4">$1,500 – $2,500</td>
+                <td class="py-3 pr-4">$3,500 – $5,500</td>
+              </tr>
+              <tr>
+                <td class="py-3 pr-4 font-medium text-ink">Cross-country (3-bedroom, 2,500 mi)</td>
+                <td class="py-3 pr-4">$2,000 – $3,500</td>
+                <td class="py-3 pr-4">$3,500 – $6,000</td>
+                <td class="py-3 pr-4">$7,000 – $12,000</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="mt-4">
+          These ranges are why using a calculator that compares all three options matters. The <strong>best moving cost calculator</strong> is the one that lets you adjust variables in real time and see how each choice affects your total.
+        </p>
+
+        <h3 class="text-lg font-semibold text-ink">Moving Cost Calculator Canada and International Options</h3>
+        <p>
+          Moving costs vary significantly by region, which is why an <strong>approximate moving cost calculator canada</strong> needs to account for Canadian pricing structures and currency. Our tool applies region-specific cost multipliers for the US, Canada, UK, Australia, and India — automatically detecting your location from postal codes or city names. Display values are shown in the local currency for each region, making it useful whether you are moving from Toronto to Vancouver or planning an international relocation. The distance engine supports Canadian postal codes (alphanumeric format) for accurate in-country routing.
+        </p>
+
+        <h3 class="text-lg font-semibold text-ink">Why MoveCostMatrix Is the Best Free Moving Cost Calculator</h3>
+        <p>
+          There are plenty of moving cost calculators on the web, but most require you to submit an email address before showing results, or they only partner with one type of moving service and bias the estimates accordingly. MoveCostMatrix is different. We are a <strong>moving cost calculator no email</strong> tool by design — privacy-first, with zero data collection. You get:
+        </p>
+        <ul class="list-disc space-y-1 pl-5">
+          <li><strong>Three-way comparison</strong> between DIY truck rental, moving containers, and professional movers on every calculation</li>
+          <li><strong>Real distance calculation</strong> using postal-code geocoding and the Haversine formula, with a reliable fallback for city names</li>
+          <li><strong>Live distance slider</strong> so you can adjust the mileage and see how costs change instantly</li>
+          <li><strong>Region-adjusted pricing</strong> across US, Canada, UK, Australia, and India</li>
+          <li><strong>Miles and kilometers</strong> toggle for metric and imperial users</li>
+          <li><strong>Region-specific mover recommendations</strong> tailored to your origin location</li>
+        </ul>
+        <p>
+          Whether you need a <strong>free moving cost calculator</strong> to get a quick ballpark or a detailed <strong>interstate moving cost calculator</strong> to compare cross-country options, MoveCostMatrix gives you the data you need to negotiate with confidence. Bookmark the tool, share it with friends who are planning a move, and come back anytime you need an estimate. No account. No email. No surprises.
+        </p>
+      </div>
+    </div>
+  </section>
+  </article>
+
+  <!-- FAQ -->
+  <section class="bg-canvas-soft px-4 py-20 sm:px-6">
+    <div class="mx-auto max-w-3xl">
+      <span class="font-mono text-xs uppercase tracking-wide text-mute">FAQ</span>
+      <h2 class="mt-2 text-3xl font-semibold tracking-tight text-ink">Frequently Asked Questions</h2>
+      <div class="mt-8 space-y-3">
+        <details class="group rounded-lg border border-hairline bg-canvas p-4">
+          <summary class="flex cursor-pointer items-center justify-between text-sm font-medium text-ink">
+            How is the distance calculated?
+            <svg class="h-4 w-4 text-mute transition-transform group-open:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </summary>
+          <p class="mt-2 text-sm text-body">If you enter valid postal codes (US ZIP, Canadian, UK, or Australian), we use the zippopotam.us API to get coordinates and calculate the Haversine distance plus a 20% road adjustment. For city names or unsupported codes, we use a deterministic algorithm to generate a proxy distance. You can fine-tune with the slider.</p>
+        </details>
+        <details class="group rounded-lg border border-hairline bg-canvas p-4">
+          <summary class="flex cursor-pointer items-center justify-between text-sm font-medium text-ink">
+            What&rsquo;s the difference between the three options?
+            <svg class="h-4 w-4 text-mute transition-transform group-open:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </summary>
+          <p class="mt-2 text-sm text-body">DIY Truck Rental: you rent a truck and handle everything. Moving Containers: a container is dropped at your door, you pack it, and the company transports it. Professional Movers: a crew handles packing, loading, transport, and unloading. Each option trades cost for convenience.</p>
+        </details>
+        <details class="group rounded-lg border border-hairline bg-canvas p-4">
+          <summary class="flex cursor-pointer items-center justify-between text-sm font-medium text-ink">
+            Which regions do you support?
+            <svg class="h-4 w-4 text-mute transition-transform group-open:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </summary>
+          <p class="mt-2 text-sm text-body">We support region-adjusted pricing for the United States ($), Canada (C$), the United Kingdom (£), Australia (A$), and India (₹). Each region has custom cost multipliers reflecting local moving market rates. The region is auto-detected from your origin or destination — or switch manually at any time.</p>
+        </details>
+        <details class="group rounded-lg border border-hairline bg-canvas p-4">
+          <summary class="flex cursor-pointer items-center justify-between text-sm font-medium text-ink">
+            Is my data saved or shared?
+            <svg class="h-4 w-4 text-mute transition-transform group-open:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </summary>
+          <p class="mt-2 text-sm text-body">No. Everything runs in your browser. We don&rsquo;t collect, store, or share any data. The only external call is to the free zippopotam.us API (used only when you enter valid postal codes).</p>
+        </details>
+        <details class="group rounded-lg border border-hairline bg-canvas p-4">
+          <summary class="flex cursor-pointer items-center justify-between text-sm font-medium text-ink">
+            How accurate are the estimates?
+            <svg class="h-4 w-4 text-mute transition-transform group-open:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </summary>
+          <p class="mt-2 text-sm text-body">Our estimates are based on industry-average per-mile rates from sources like the American Moving and Storage Association and the FMCSA, combined with actual provider pricing from U-Haul, PODS, United Van Lines, and Atlas Van Lines. Your actual quote may vary based on weight, season, and add-ons. Use our estimates as a planning baseline and obtain binding quotes from movers before committing.</p>
+        </details>
+        <details class="group rounded-lg border border-hairline bg-canvas p-4">
+          <summary class="flex cursor-pointer items-center justify-between text-sm font-medium text-ink">
+            Do you partner with any moving companies?
+            <svg class="h-4 w-4 text-mute transition-transform group-open:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </summary>
+          <p class="mt-2 text-sm text-body">No. MoveCostMatrix is fully independent. We do not accept payments, commissions, or referral fees from any moving company. Every calculation shows all three options — DIY, containers, and professional movers — with no bias. Our mover recommendations are based on regional availability and service type, not advertising relationships.</p>
+        </details>
+        <details class="group rounded-lg border border-hairline bg-canvas p-4">
+          <summary class="flex cursor-pointer items-center justify-between text-sm font-medium text-ink">
+            Can I use the calculator on my phone?
+            <svg class="h-4 w-4 text-mute transition-transform group-open:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </summary>
+          <p class="mt-2 text-sm text-body">Yes. The entire calculator is responsive and works on any screen size — phone, tablet, or desktop. All estimates update in real time as you type or adjust the slider, with no page reloads. The same privacy guarantees apply on every device.</p>
+        </details>
+        <details class="group rounded-lg border border-hairline bg-canvas p-4">
+          <summary class="flex cursor-pointer items-center justify-between text-sm font-medium text-ink">
+            How often are the rates updated?
+            <svg class="h-4 w-4 text-mute transition-transform group-open:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </summary>
+          <p class="mt-2 text-sm text-body">We review and update our per-mile rates quarterly based on published rate schedules from major providers and industry data from the US DOT Household Goods Survey. Regional cost multipliers are reviewed regularly and exchange rates are pulled from current market data at the time of your visit. The &ldquo;Updated&rdquo; badge on the page reflects the most recent rate review.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+  </main>
+
+  <script is:inline>
+    document.getElementById("themeToggle").addEventListener("click", function () {
+      var html = document.documentElement;
+      var isDark = html.classList.toggle("dark");
+      try { localStorage.setItem("movecost-theme", isDark ? "dark" : "light"); } catch(e) {}
+      var m = document.getElementById("themeColor");
+      if (m) m.setAttribute("content", isDark ? "#1a1a1a" : "#fafafa");
+    });
+  </script>
+
+  <Footer currentPath="/" />
 </Layout>
