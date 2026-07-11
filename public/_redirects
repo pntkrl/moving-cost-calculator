@@ -1,2 +1,6 @@
 # Redirect trailing-slash URLs to non-trailing-slash (prevents duplicate content + 308 chains)
 /*/ /:splat 301
+
+# Redirect .html extension URLs to clean URLs (prevents duplicate content)
+/index.html / 301
+/*.html /:splat 301

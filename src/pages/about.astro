@@ -4,7 +4,7 @@ import Nav from "../components/Nav.astro";
 import Footer from "../components/Footer.astro";
 ---
 
-<Layout title="About Us | MoveCostMatrix" description="Learn about MoveCostMatrix — a free, privacy-first moving cost calculator that compares DIY truck, container, and professional mover estimates." canonical="/about">
+<Layout title="About MoveCostMatrix | Free Moving Cost Calculator" description="Learn about MoveCostMatrix — a free, privacy-first moving cost calculator that compares DIY truck, container, and professional mover estimates." canonical="/about">
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -25,30 +25,30 @@ import Footer from "../components/Footer.astro";
 
       <div class="mt-8 space-y-6 text-sm leading-relaxed text-body content">
         <h2 class="text-lg font-semibold text-ink">Our Mission</h2>
-        <p>Moving is expensive, stressful, and opaque. Most people get estimates from only one type of mover because they do not have an easy way to compare options. MoveCostMatrix was built to fix that: a single page where you can see the cost of every major moving method side by side, instantly, with no email required and no upsells.</p>
+        <p>Moving is expensive, stressful, and often confusing. Most people only get an estimate from one type of mover. That is because comparing options is not easy. MoveCostMatrix fixes this. You can see the cost of every major moving method side by side. Instantly. No email required. No upsells.</p>
 
         <h2 class="text-lg font-semibold text-ink">Why We Built It</h2>
-        <p>The moving industry is dominated by quote-gathering sites that exist to sell your information to movers. Every time you fill out a &ldquo;free quote&rdquo; form, your phone starts ringing within minutes. We wanted something better — a calculator that treats your privacy with the same care it treats the math. No data collection, no sales calls, no hidden agenda. Just a good-faith estimate to help you plan your move and negotiate with confidence.</p>
+        <p>Many moving quote sites exist to sell your information to movers. Fill out one &ldquo;free quote&rdquo; form and your phone rings within minutes. We wanted something better. A calculator that respects your privacy as much as it respects the math. No data collection. No sales calls. No hidden agenda. Just a good-faith estimate to help you plan and negotiate with confidence.</p>
 
         <h2 class="text-lg font-semibold text-ink">How It Works</h2>
-        <p>Our calculator uses the Haversine formula to calculate great-circle distance between your origin and destination, then applies a 20% road-adjustment factor for realism. For postal codes, we use the free zippopotam.us API to look up coordinates. For city names, we use a deterministic fallback algorithm. The result is fed into three pricing models based on industry data from the American Moving and Storage Association and published rate schedules:</p>
+        <p>Our calculator measures the distance between your origin and destination using the Haversine formula. It then adds a 20% road-adjustment factor for realism. For postal codes, we use the free zippopotam.us API to find coordinates. For city names, we use a fallback algorithm. The result feeds into three pricing models based on industry data from the American Moving and Storage Association and published rate schedules:</p>
         <ul class="list-disc space-y-1 pl-5">
           <li><strong>DIY Truck Rental</strong> — $0.80 per mile, plus base fees typical of U-Haul and similar providers</li>
-          <li><strong>Moving Containers</strong> — $1.50 per mile, reflecting PODS and 1-800-PACK-RAT pricing structures</li>
-          <li><strong>Professional Movers</strong> — $2.50 per mile, based on industry averages from United Van Lines, Atlas Van Lines, and Mayflower</li>
+          <li><strong>Moving Containers</strong> — $1.50 per mile, based on PODS and 1-800-PACK-RAT pricing</li>
+          <li><strong>Professional Movers</strong> — $2.50 per mile, from industry averages across United Van Lines, Atlas Van Lines, and Mayflower</li>
         </ul>
-        <p>All calculations are in USD and can be displayed in 7 currencies. A live slider lets you adjust the distance to see how small changes affect your total.</p>
+        <p>All results are in USD and can be shown in 7 currencies. A slider lets you adjust the distance and see how small changes affect your total.</p>
 
         <h2 class="text-lg font-semibold text-ink">Design Principles</h2>
         <ul class="list-disc space-y-1 pl-5">
-          <li><strong>Privacy-first by default.</strong> Everything runs client-side. No accounts, no registration, and no tracking of your calculator inputs. We use only anonymized analytics to measure traffic.</li>
-          <li><strong>No email gate.</strong> You get your estimate immediately, without entering your email address.</li>
-          <li><strong>Unbiased comparison.</strong> We show all three options on every calculation. We are not paid by any mover to promote their service.</li>
-          <li><strong>Accessible.</strong> Dark mode, keyboard navigation, high-contrast text, and responsive design.</li>
+          <li><strong>Privacy-first by default.</strong> Everything runs in your browser. No accounts, no registration, no tracking of your inputs. We only use anonymized analytics to measure traffic.</li>
+          <li><strong>No email gate.</strong> See your estimate right away — no email address needed.</li>
+          <li><strong>Unbiased comparison.</strong> We show all three options every time. No mover pays us to promote their service.</li>
+          <li><strong>Accessible.</strong> Dark mode, keyboard navigation, high-contrast text, and responsive design for all devices.</li>
         </ul>
 
         <h2 class="text-lg font-semibold text-ink">Disclaimer</h2>
-        <p>MoveCostMatrix provides estimates for planning purposes only. We are not a moving broker, moving company, or financial advisor. Always obtain binding quotes from licensed moving companies before making commitments. The rates used in our calculator are based on national averages and may not reflect your specific circumstances.</p>
+        <p>MoveCostMatrix provides estimates for planning only. We are not a moving broker, moving company, or financial advisor. Always get binding quotes from licensed moving companies before you commit. The rates in our calculator are based on national averages and may not match your specific situation.</p>
       </div>
     </div>
   </section>

@@ -8,6 +8,7 @@ export default defineConfig({
     plugins: [tailwindcss()],
   },
   build: {
+    format: "file",
     inlineStylesheets: "always",
   },
   trailingSlash: "never",

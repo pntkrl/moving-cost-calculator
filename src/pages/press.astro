@@ -4,7 +4,7 @@ import Nav from "../components/Nav.astro";
 import Footer from "../components/Footer.astro";
 ---
 
-<Layout title="Press | MoveCostMatrix" description="MoveCostMatrix press and media resources. Free moving cost calculator press kit, brand assets, and media contact information." canonical="/press">
+<Layout title="Press and Media Resources | MoveCostMatrix" description="MoveCostMatrix press and media resources. Free moving cost calculator press kit, brand assets, and media contact information." canonical="/press">
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -21,29 +21,33 @@ import Footer from "../components/Footer.astro";
   <section class="bg-canvas px-4 pb-28 pt-16 sm:pb-36 sm:pt-24">
     <div class="mx-auto max-w-3xl">
       <span class="font-mono text-xs uppercase tracking-wide text-mute">Press</span>
-      <h1 class="mt-2 text-3xl font-semibold tracking-tight text-ink">Press & Media</h1>
-      <p class="mt-2 max-w-xl text-body">Resources for journalists and media professionals covering MoveCostMatrix.</p>
+      <h1 class="mt-2 text-3xl font-semibold tracking-tight text-ink">Press & Media Resources</h1>
+      <p class="mt-2 max-w-xl text-body">Resources for journalists and media professionals covering MoveCostMatrix, our mission to make moving cost comparison transparent and private, and the story behind the tool.</p>
 
       <div class="mt-10 space-y-6">
         <div class="rounded-lg border border-hairline bg-canvas-soft p-6">
           <h2 class="text-lg font-semibold text-ink">About MoveCostMatrix</h2>
-          <p class="mt-1 text-sm text-body">MoveCostMatrix is a free, privacy-first moving cost calculator that compares DIY truck rentals, portable moving containers, and full-service professional movers side by side. No email required, no data collection, no upsells — just instant estimates in 7 currencies.</p>
+          <p class="mt-1 text-sm text-body">MoveCostMatrix is a free, privacy-first moving cost calculator that compares DIY truck rentals, portable moving containers, and full-service professional movers side by side. No email required, no data collection, no upsells — just instant estimates in 7 currencies. Launched in July 2026, the tool was built to solve a common problem: getting accurate moving cost comparisons without giving up your privacy or enduring sales calls.</p>
+          <p class="mt-3 text-sm text-body">Unlike traditional quote-gathering sites that exist primarily to sell user information to moving companies, MoveCostMatrix processes everything directly in your browser. Your origin, destination, and cost estimates never leave your device. This privacy-first approach sets it apart in an industry where lead generation is the dominant business model.</p>
         </div>
 
         <div class="rounded-lg border border-hairline bg-canvas-soft p-6">
           <h2 class="text-lg font-semibold text-ink">Key Facts</h2>
           <ul class="mt-2 list-disc space-y-1 pl-5 text-sm text-body">
             <li>Launched: July 2026</li>
-            <li>Platform: Fully static, 100% client-side</li>
-            <li>Distance engine: Haversine formula + 20% road adjustment via zippopotam.us API</li>
-            <li>Coverage: US, Canada, UK, Australia, India postal codes with region-adjusted pricing</li>
-            <li>Privacy: No accounts or registration, zero collection of calculator inputs, with basic anonymized traffic analytics</li>
+            <li>Platform: Fully static, 100% client-side JavaScript — no server-side processing of user data</li>
+            <li>Distance engine: Haversine formula with 20% road-adjustment factor, using the free zippopotam.us API for postal code lookups</li>
+            <li>Coverage: US, Canada, UK, Australia, and India postal codes with region-adjusted pricing models</li>
+            <li>Pricing models: Three methods — DIY truck rental ($0.80/mi), moving containers ($1.50/mi), and professional movers ($2.50/mi), based on AMSA data and published rate schedules</li>
+            <li>Currency support: 7 currencies with real-time conversion</li>
+            <li>Privacy: No accounts, no registration, zero collection of calculator inputs, and basic anonymized traffic analytics only</li>
+            <li>Accessibility: Dark mode, keyboard navigation, high-contrast text, and responsive design across all devices</li>
           </ul>
         </div>
 
         <div class="rounded-lg border border-hairline bg-canvas-soft p-6">
           <h2 class="text-lg font-semibold text-ink">Media Contact</h2>
-          <p class="mt-1 text-sm text-body">For press inquiries, interviews, or brand assets, contact us at <a href="mailto:hello@movecostmatrix.com" class="text-link underline">hello@movecostmatrix.com</a>.</p>
+          <p class="mt-1 text-sm text-body">For press inquiries, interview requests, brand assets, or questions about the tool, contact us at <!--email_off--><a href="mailto:hello@movecostmatrix.com" class="text-link underline">hello@movecostmatrix.com</a><!--/email_off-->. We respond to media requests within 24 hours.</p>
         </div>
       </div>
     </div>
