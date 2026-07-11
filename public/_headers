@@ -5,6 +5,7 @@
   X-Content-Type-Options: nosniff
   Referrer-Policy: strict-origin-when-cross-origin
   Permissions-Policy: geolocation=(), microphone=(), camera=()
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://pagead2.googlesyndication.com https://www.googletagmanager.com https://*.googletagmanager.com; connect-src 'self' https://zippopotam.us https://www.googletagmanager.com https://*.google-analytics.com; img-src 'self' https://*.google-analytics.com https://*.googletagmanager.com https://pagead2.googlesyndication.com data:; style-src 'self' 'unsafe-inline'; font-src 'self' data:; frame-src https://pagead2.googlesyndication.com; object-src 'none'
 
 # Cache self-hosted Cloudflare Insights beacon for 1 year
 /beacon.min.js
